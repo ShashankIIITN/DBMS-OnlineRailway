@@ -7,8 +7,8 @@ import Pnrsearch from "./components/pnrsearch";
 function Homepage() {
   return (
     <>
-      <Bookticket />
       <Trainsearch />
+      <Bookticket />
       <Pnrsearch />
     </>
 

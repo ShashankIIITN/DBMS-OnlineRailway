@@ -6,7 +6,7 @@ const mysql = require("mysql2");
 // const pool = require("./connect");
 const { response } = require("express");
 const schedule = require('node-schedule');
-const { register, authenticate, authenticateAdmin, changePassword, getMaxRouteID, addTrain, addRoute, allTrains, deleteTrain, routeInfo, getStStation, getEndStation, getTrain, searchTrain, seats, BookTicket, getTrainID, addPassenger, updateSeats, getTickets, getStationDetails, deleteTicket, getAllBookings } = require('./database');
+const { register, authenticate, authenticateAdmin, changePassword, getMaxRouteID, addTrain, addRoute, allTrains, deleteTrain, routeInfo, getStStation, getEndStation, getTrain, searchTrain, seats, BookTicket, getTrainID, addPassenger, updateSeats, getTickets, getStationDetails, deleteTicket, getAllBookings, getPNR } = require('./database');
 
 app.use(cors());
 app.use(express.json());
@@ -205,8 +205,8 @@ app.post("/getTrains", async (req, res) => {
         for (let i = 0; i < trains.length; i++) {
             let currentTrain = await getTrain(trains[i].TRAINID);
             let remainingSeats = await seats(trains[i].TRAINID, trains[i].ROUTEID, trains[i].DEPARTURETIME, trains[i].ARRIVALTIME);
-            remainingSeats = remainingSeats[0]['Seats'];
             wSeats = remainingSeats[0]['WSeats'];
+            remainingSeats = remainingSeats[0]['Seats'];
             currentTrain = currentTrain[0][i];
             let h = parseInt((currentTrain.StartTime).slice(0, 3)), m = parseInt((currentTrain.StartTime).slice(3, 5));
             let dh = (h + Math.floor(trains[i].DEPARTURETIME / 60)) % 24, dm = (m + trains[i].DEPARTURETIME % 60) % 60;
@@ -352,6 +352,17 @@ app.post("/getBookings", async (req, res) => {
             })
         }
         res.json(obj);
+    } catch (err) {
+        res.json(obj);
+    }
+});
+app.post("/getPNR", async (req, res) => {
+    req = req.body;
+    let obj = [];
+    try {
+        let data = await getPNR(req.tid)
+        console.log("af",data)
+        res.json(data[0]);
     } catch (err) {
         res.json(obj);
     }

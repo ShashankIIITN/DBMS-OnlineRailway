@@ -274,15 +274,14 @@ const updateSeats = async (len, source, destination, routeID, trainID) => {
       let len2 = data1[0][i].RemainingSeats;
 
       len2 -= len;
-      let wlen = 6;
-      if(len2 < 0)
-      {
-        wlen = -1*len2;
+      let wlen = data1[0][i].WSeats;
+      if (len2 < 0) {
+        wlen += -1 * len2;
         len2 = 0;
       }
-      console.log(len2,wlen)
+      console.log(len2, wlen)
       const data = await pool.query(
-        `UPDATE routes SET RemainingSeats = ?, WSeats = ? WHERE RouteID = ? AND TrainID = ? AND CurrentStation = ? AND TimefromStart = ?;`, [len2,wlen,routeID, trainID, data1[0][i].CurrentStation, data1[0][i].TimefromStart]
+        `UPDATE routes SET RemainingSeats = ?, WSeats = ? WHERE RouteID = ? AND TrainID = ? AND CurrentStation = ? AND TimefromStart = ?;`, [len2, wlen, routeID, trainID, data1[0][i].CurrentStation, data1[0][i].TimefromStart]
       )
     }
 
@@ -315,7 +314,7 @@ const updateSeats = async (len, source, destination, routeID, trainID) => {
     //   ]
     // );
     // console.log(data)
-    return {status:"ok"};
+    return { status: "ok" };
   } catch (error) {
     console.log(error);
   }
@@ -348,7 +347,61 @@ const getStationDetails = async (source, destination, routeID) => {
 
 const deleteTicket = async (id) => {
   try {
-    const data = pool.query(
+    const data2 = await pool.query(
+      "SELECT * FROM tickets WHERE TicketID=?;",
+      [id]
+    );
+
+
+    const data1 = await pool.query(
+      `SELECT * FROM routes
+      WHERE RouteID = ?
+      AND TrainID = ?
+      AND TimefromStart >= (
+        SELECT TimefromStart 
+          FROM (SELECT * FROM routes) AS subquery 
+          WHERE CurrentStation = ? AND RouteID = ? AND TrainID = ?
+        )
+        AND TimefromStart <= (
+          SELECT TimefromStart 
+          FROM (SELECT * FROM routes) AS subquery 
+          WHERE CurrentStation = ? AND RouteID = ? AND TrainID = ?
+        );
+      `,
+      [
+        data2[0][0].RouteID,
+        data2[0][0].TrainID,
+        data2[0][0].SourceStation,
+        data2[0][0].RouteID,
+        data2[0][0].TrainID,
+        data2[0][0].DestinationStation,
+        data2[0][0].RouteID,
+        data2[0][0].TrainID,
+      ]
+    );
+
+    for (let i = 0; i < data1[0].length; i++) {
+
+      console.log(i)
+      let len = data1[0][i].RemainingSeats;
+
+      let len2 = data2[0][0].NoOfPassenger;
+      let wlen = data1[0][i].WSeats;
+      if (wlen > 0) {
+        let init = wlen;
+        wlen -= Math.min(len2, wlen);
+        if (wlen == 0)
+          len += len2 - init;
+      }
+      console.log(len2, wlen)
+      const data = await pool.query(
+        `UPDATE routes SET RemainingSeats = ?, WSeats = ? WHERE RouteID = ? AND TrainID = ? AND CurrentStation = ? AND TimefromStart = ?;`, [len, wlen, data2[0][0].RouteID, data2[0][0].TrainID, data1[0][i].CurrentStation, data1[0][i].TimefromStart]
+      )
+    }
+
+    // console.log(data1)
+
+    const data = await pool.query(
       "DELETE FROM tickets WHERE TicketID=?;",
       [id]
     );
@@ -363,6 +416,17 @@ const getAllBookings = async () => {
   try {
     const data = await pool.query(
       "SELECT * FROM tickets;"
+    );
+
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+const getPNR = async (tID) => {
+  try {
+    const data = await pool.query(
+      "SELECT * FROM tickets WHERE TicketID = ?;", [tID]
     );
 
     return data;
@@ -393,5 +457,6 @@ module.exports = {
   getTickets,
   getStationDetails,
   deleteTicket,
-  getAllBookings
+  getAllBookings,
+  getPNR
 };

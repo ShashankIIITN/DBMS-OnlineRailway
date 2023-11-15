@@ -28,7 +28,7 @@ function Details(props) {
                     <div className="box">
                         <h3>{props.trainName}</h3>
                         <h3>{props.trainid}</h3>
-                        <h4 style={{color: '#4CAF50'}}>{props.remainingSeats} Left <span style={{color:'yellow'}}>{props.WSeats} Waiting</span></h4>
+                        <h4 style={{color: '#4CAF50'}}>{props.remainingSeats} Left <span style={{color:'red'}}>{props.WSeats} Waiting</span></h4>
                         <div style={{display: 'flex', gap: 30}}>
                             <Button onClick={bookTicket} variant="contained">Book</Button>
                             <h4 style={{color: '#03A9F4'}}>₹{props.price}</h4>

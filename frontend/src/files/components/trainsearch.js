@@ -84,7 +84,7 @@ function Trainsearch() {
               ) : (
                 <div className="trainSchedule margin-10-10">
                   <span className="H1"><h1>Train Schedule</h1></span>
-                  <div className="info margin-10-10">
+                  <div className="info">
                       <div>
                           <h3>Train Number</h3>
                           <p>{trainSchedule.trainId}</p>

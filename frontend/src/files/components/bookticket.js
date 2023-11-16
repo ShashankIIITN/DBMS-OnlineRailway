@@ -5,6 +5,8 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Details from "../Details";
 
+const url ="192.168.106.194";
+
 function Bookticket() {
   const [flag, setFlag] = useState(false);
 
@@ -19,7 +21,7 @@ function Bookticket() {
   const onSubmitForm = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:5050/getTrains", {
+      const response = await fetch(`http://${url}:5050/getTrains`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(trainDeatails),

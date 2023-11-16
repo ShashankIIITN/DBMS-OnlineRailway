@@ -1,6 +1,12 @@
 import React, {useState} from "react";
 import Tickets from "./Tickets.jsx";
 import "./mybookings.css";
+// require('dotenv').config()
+
+// const url = process.env.REACT_APP_URL;
+
+// console.log(process.env.REACT_APP_URL)
+
 
 function Mybookings () {
     const [bookings, setBookings] = useState([]);
@@ -13,7 +19,7 @@ function Mybookings () {
 
         console.log(userId);
         try {
-            const response = await fetch("http://localhost:5050/getBookings", {
+            const response = await fetch("http://192.168.106.194:5050/getBookings", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify(userId),

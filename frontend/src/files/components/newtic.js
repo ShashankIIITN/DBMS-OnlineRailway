@@ -67,6 +67,7 @@ function Tickets(props) {
                     <h4>{props.ticket.Price} Rs</h4>
                     <h5>{props.ticket.ContactNo}</h5>
                     <h5>{props.ticket.Email}</h5>
+                    {props.ticket.Status == "C" ? <h5>Confirm</h5> : <h5>Waiting</h5>}
                 </div>
             </div>
             <div className="ticket-information-30">

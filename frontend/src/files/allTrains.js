@@ -30,7 +30,7 @@ export default function AllTrain() {
 
     const getAllTrains = async () => {
         try {
-            const response = await fetch("http://localhost:5050/allTrains", {
+            const response = await fetch("http://192.168.106.194:5050/allTrains", {
               method: "POST",
               headers: { "Content-Type": "application/json" }, 
             });

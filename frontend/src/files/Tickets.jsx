@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./tickets.css";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
@@ -6,9 +6,11 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
+import { useReactToPrint } from "react-to-print";
 
 function Tickets(props) {
   const [open, setOpen] = React.useState(false);
+  const compReff = useRef(null)
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -18,25 +20,32 @@ function Tickets(props) {
     setOpen(false);
   };
 
-  const cancelTicket =  async () => {
+  const handlePrint = useReactToPrint({
+    content: () => compReff.current
+    ,
+    documentTitle: "SunTic" + props.ticketId,
+    onAfterPrint: () => alert("Print Success!")
+
+  })
+  const cancelTicket = async () => {
     console.log(props.trainId);
     try {
-        const response = await fetch("http://localhost:5050/deleteTicket", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ticketId: props.ticketId}),
-        });
-        let res = await response.json();
-        console.log(res);
-      } catch (err) {
-        console.log(err);
+      const response = await fetch("http://localhost:5050/deleteTicket", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ticketId: props.ticketId }),
+      });
+      let res = await response.json();
+      console.log(res);
+    } catch (err) {
+      console.log(err);
     }
     setOpen(false);
     window.location.href = "/mybookings";
   }
 
   props = props.props;
-  
+
   const months = {
     "01": "Jan",
     "02": "Feb",
@@ -52,81 +61,119 @@ function Tickets(props) {
     12: "Dec",
   };
   return (
-    <div className="tickets-box">
-      <div className="ticket-information">
-        <div className="ticket-child">
-          <h4>{props.trainName}</h4>
-          <h4>{props.trainId}</h4>
-          <h5>PNR: PNR{props.ticketId}</h5>
-          <h5>{props.noOfPassengers} Passengers</h5>
+    <>
+      <div className="tickets-box" >
+        <div className="ticket-information" >
+          <div className="ticket-child">
+            <h4>{props.trainName}</h4>
+            <h4>{props.trainId}</h4>
+            <h5>PNR: PNR{props.ticketId}</h5>
+            <h5>{props.noOfPassengers} Passengers</h5>
+          </div>
+          <div className="ticket-child">
+            <h4>{props.departureStation}</h4>
+            <h5>{props.departureTime}</h5>
+            <h5>
+              {props.departureDate}{" "}
+              {months[props.departureDate]}
+            </h5>
+          </div>
+          <div className="ticket-child">
+            <h5>
+              {props.durationHours} Hrs {props.durationMinutes} Mins
+            </h5>
+            <h5>Runs On</h5>
+            <h5>{props.runsOn}</h5>
+          </div>
+          <div className="ticket-child">
+            <h4>{props.arrivalStation}</h4>
+            <h5>{props.arrivalTime}</h5>
+            <h5>
+              {props.arrivalDate}{" "}
+              {months[props.arrivalDate]}
+            </h5>
+          </div>
         </div>
-        <div className="ticket-child">
-          <h4>{props.departureStation}</h4>
-          <h5>{props.departureTime}</h5>
-          <h5>
-            {props.departureDate}{" "}
-            {months[props.departureDate]}
-          </h5>
-        </div>
-        <div className="ticket-child">
-          <h5>
-            {props.durationHours} Hrs {props.durationMinutes} Mins
-          </h5>
-          <h5>Runs On</h5>
-          <h5>{props.runsOn}</h5>
-        </div>
-        <div className="ticket-child">
-          <h4>{props.arrivalStation}</h4>
-          <h5>{props.arrivalTime}</h5>
-          <h5>
-            {props.arrivalDate}{" "}
-            {months[props.arrivalDate]}
-          </h5>
-        </div>
-      </div>
-      <div className="ticket-information-30">
-        <Button
-          variant="outlined"
-          style={{
-            marginRight: "30px",
-            border: "1px solid #EF5350",
-            borderRadius: "4px",
-            color: "#EF5350",
-          }
-          
-        }
-        onClick = {handleClickOpen}
+        <div className="ticket-information-30">
+          <Button
+            variant="outlined"
+            style={{
+              marginRight: "30px",
+              border: "1px solid #EF5350",
+              borderRadius: "4px",
+              color: "#EF5350",
+            }
 
-        >
-          Cancel Ticket
-        </Button>
-        <Dialog
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          {"Are you sure ?"}
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-          This action cannot be undone. This will permanently cancel the ticket. All the data regarding the ticket will be deleted.    
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose}>NO, DON'T CANCEL</Button>
-          <Button onClick={cancelTicket} autoFocus>
-            YES, CANCEL TICKET  
+            }
+            onClick={handleClickOpen}
+
+          >
+            Cancel Ticket
           </Button>
-        </DialogActions>
-      </Dialog>
-        <Button variant="outlined" color="success">
-          Print Ticket
-        </Button>
+          <Dialog
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+          >
+            <DialogTitle id="alert-dialog-title">
+              {"Are you sure ?"}
+            </DialogTitle>
+            <DialogContent>
+              <DialogContentText id="alert-dialog-description">
+                This action cannot be undone. This will permanently cancel the ticket. All the data regarding the ticket will be deleted.
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleClose}>NO, DON'T CANCEL</Button>
+              <Button onClick={cancelTicket} autoFocus>
+                YES, CANCEL TICKET
+              </Button>
+            </DialogActions>
+          </Dialog>
+          <Button variant="outlined" color="success" onClick={handlePrint}>
+            Print Ticket
+          </Button>
+        </div>
       </div>
-      
-    </div>
+      <div style={{ display: "none" }}>
+        <div className="tickets-box" style={{textAlign:'center'}} ref={compReff} >
+          <h2>Sunset Railways</h2>
+          <div className="ticket-information" >
+            <div className="ticket-child">
+              <h4>{props.trainName}</h4>
+              <h4>{props.trainId}</h4>
+              <h5>PNR: PNR{props.ticketId}</h5>
+              <h5>{props.noOfPassengers} Passengers</h5>
+            </div>
+            <div className="ticket-child">
+              <h4>{props.departureStation}</h4>
+              <h5>{props.departureTime}</h5>
+              <h5>
+                {props.departureDate}{" "}
+                {months[props.departureDate]}
+              </h5>
+            </div>
+            <div className="ticket-child">
+              <h5>
+                {props.durationHours} Hrs {props.durationMinutes} Mins
+              </h5>
+              <h5>Runs On</h5>
+              <h5>{props.runsOn}</h5>
+            </div>
+            <div className="ticket-child">
+              <h4>{props.arrivalStation}</h4>
+              <h5>{props.arrivalTime}</h5>
+              <h5>
+                {props.arrivalDate}{" "}
+                {months[props.arrivalDate]}
+              </h5>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </>
   );
 }
 

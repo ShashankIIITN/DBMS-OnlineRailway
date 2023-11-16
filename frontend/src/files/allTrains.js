@@ -54,11 +54,11 @@ export default function AllTrain() {
         getAllTrains();
     }, [setRows]);
   return (
-    <div className="datagrid-containter">
+    <div className="datagrid-containter" style={{textAlign:"center"}}>
       <br />
-      <h1>All Trains</h1>
+      <h1 >All Trains</h1>
       <br/>
-      <table className="table">
+      <table className="table" >
         <thead>
           <tr>
             <th scope="col">Train ID</th>

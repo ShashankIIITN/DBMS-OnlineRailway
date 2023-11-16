@@ -8,26 +8,29 @@ export default function AllTrain() {
 
   const getAllBookings = async () => {
     try {
-        const response = await fetch("http://localhost:5050/allBookings", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" }, 
-        });
-        const res = await response.json();
-        console.log(res);
-        setTickets(res);
-      } catch (err) {
-        console.log(err);
-      }
-}
+      const response = await fetch("http://localhost:5050/allBookings", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+      });
+      const res = await response.json();
+      console.log(res);
+      setTickets(res);
+    } catch (err) {
+      console.log(err);
+    }
+  }
   React.useEffect(() => {
     getAllBookings();
-  }, [] );
+  }, []);
   return (
     <div className="datagrid-containter">
-        <br/>
-        <h1>All Bookings</h1>
-        <br/>
-        <table className="table">
+      <br />
+      <h1 style={{
+        color:
+          "#bb2b2b"
+      }}>All Bookings</h1>
+      <br />
+      <table className="table">
         <thead>
           <tr>
             <th scope="col">Ticket ID</th>
@@ -41,20 +44,20 @@ export default function AllTrain() {
           </tr>
         </thead>
         <tbody>
-        {tickets.map((item, index) => (
-      <tr key={index}>
-        <td>
-          {item.TicketID}
-        </td>
-        <td>{item.TrainID}</td>
-        <td>{item.SourceStation}</td>
-        <td>{item.DestinationStation}</td>
-        <td>{item.Price}</td>
-        <td>{item.Email}</td>
-        <td>{item.ContactNo}</td>
-        <td>{item.NoOfPassenger}</td>
-      </tr>
-    ))}
+          {tickets.map((item, index) => (
+            <tr key={index}>
+              <td>
+                {item.TicketID}
+              </td>
+              <td>{item.TrainID}</td>
+              <td>{item.SourceStation}</td>
+              <td>{item.DestinationStation}</td>
+              <td>{item.Price}</td>
+              <td>{item.Email}</td>
+              <td>{item.ContactNo}</td>
+              <td>{item.NoOfPassenger}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>

@@ -67,9 +67,9 @@ function Bookticket() {
 
   return (
     <div className="bookticket">
-      <div className="flex-child">
+      <div className="flex-child" style={{margin:"auto", textAlign:"center"}}>
         <h2>Book Your Ticket </h2>
-        <form onSubmit={onSubmitForm}>
+        <form onSubmit={onSubmitForm} >
           <div className="ticket-from-flex">
             <div className="ticket-from-flex-child">
               <TextField

@@ -128,7 +128,10 @@ small, .text_small {font-size: 0.8rem;}
 
 .datagrid-containter{
     margin: 60px 100px 80px 100px;
-    color: var(--primaryBlue);
+    color: rgb(255, 255, 255);
+    border: 3px solid white;
+    padding: 0% 2%;
+    box-shadow: 0px 0px 10px 10px #888;
 }
 
 .delete_train {
@@ -144,4 +147,7 @@ small, .text_small {font-size: 0.8rem;}
 
 .change_password{
     color: var(--primaryBlue);
+}
+.table{
+    margin: auto;
 }

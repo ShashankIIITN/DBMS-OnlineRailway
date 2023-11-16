@@ -55,7 +55,7 @@ function ChangePassword() {
 
     return (
         <div className="change_password" style={{color:"rgb(187, 43, 43)", textAlign:"center"}}>
-        <div style={{border:"2px solid red", padding:"2%", boxShadow:"0px 0px 10px 7px #888888"}}>
+        <div style={{border:"2px solid red", padding:"2%", boxShadow:"0px 0px 10px 7px #888888", borderRadius:"10px"}}>
         <h3>Change Password</h3>
             <br />
             <form onSubmit={onSubmitForm} >

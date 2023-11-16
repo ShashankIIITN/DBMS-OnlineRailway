@@ -52,12 +52,12 @@ function Pnrsearch() {
   // }
   return (
     <div className="pnrsearch">
-      <div className="flex-child">
+      <div className="flex-child" style={{margin:"auto", textAlign:"center"}}>
         <h2>Find My PNR</h2>
         <form onSubmit={handleSubmit}>
           <div className="pnr-for-flex">
             <div className="pnr-for-flex-child-1">
-              <TextField required id="outlined-required" label="PNR Enquiry" inputRef={reff}  color="warning"/>
+              <TextField required id="outlined-required" label="PNR Enquiry" inputRef={reff}  color="warning" sx={{width:"200px"}}/>
             </div>
             <div className="pnr-for-flex-child-3">
               <Button style={{ width: 100 }} type="submit" variant="contained" color="success">
@@ -67,7 +67,7 @@ function Pnrsearch() {
           </div>
         </form>
       </div>
-      <div className="flex-child">{Bookings !== null ? <PNRLst Bookings={Bookings} /> : "Not Found"}</div>
+      <div className="flex-child" style={{margin:"auto", textAlign:"center"}}>{Bookings !== null ? <PNRLst Bookings={Bookings} /> : "Not Found"}</div>
     </div>
   );
 }

@@ -2,7 +2,7 @@ import React from "react";
 import Button from "@mui/material/Button";
 import "../files1.css";
 import "./navbar.css";
-import logo from "./logo3.png";
+import logo from ".././logo3.png";
 
 function Navbar() {
   let typeUser = sessionStorage.getItem("typeUser");
@@ -25,7 +25,7 @@ function Navbar() {
                   className="a-link"
                   style={{ textDecoration: "none" }}
                 >
-                  <img src={logo}></img>
+                  <img src={logo} className="tlogo"></img>
                 </a>
               </h3>
             </div>
@@ -98,7 +98,7 @@ function Navbar() {
             </div>
             <div className="nav_buttons_C">
               <div>
-                <Button onClick={logOut} variant="outlined">
+                <Button onClick={logOut} variant="outlined" color="success">
                   LOGOUT
                 </Button>
               </div>

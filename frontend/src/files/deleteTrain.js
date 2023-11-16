@@ -35,7 +35,7 @@ function DeleteTrain() {
     setTrainId({trainId: v});
   };
   return (
-    <div className="delete_train">
+    <div className="delete_train" style={{textAlign:"center"}}>
       <div className="delete_train_input">
         <h3>Delete Train</h3>
         <br />
@@ -44,9 +44,10 @@ function DeleteTrain() {
           label="Train ID"
           variant="outlined"
           onChange={handleOnChange}
+          color="warning"
         />
         <br /> <br />
-        <Button variant="contained" onClick={deleteTrain}>
+        <Button variant="outlined" onClick={deleteTrain} color="error">
           Delete Train
         </Button>
       </div>

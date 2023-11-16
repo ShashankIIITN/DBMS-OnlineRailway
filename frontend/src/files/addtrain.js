@@ -121,6 +121,7 @@ function Addtrain() {
               label="Train Name"
               value={trainInfo.trainName}
               onChange={handleTrainFrom}
+              color="warning"
             />
           </div>
           <div className="train-details-child">
@@ -130,6 +131,7 @@ function Addtrain() {
               label="Runs On"
               value={trainInfo.runson}
               onChange={handleTrainFrom}
+              color="warning"
             />
           </div>
           <div className="train-details-child">
@@ -139,6 +141,7 @@ function Addtrain() {
               label="Total Seats"
               value={trainInfo.totalseats}
               onChange={handleTrainFrom}
+              color="warning"
             />
           </div>
           <div className="train-details-child">
@@ -148,10 +151,11 @@ function Addtrain() {
               label="Start Time"
               value={trainInfo.starttime}
               onChange={handleTrainFrom}
+              color="warning"
             />
           </div>
         </div>
-        <h2>Route Detials</h2>
+        <h2 >Route Details</h2>
         <div className="route-detials">
           <div className="route-form-container">
             {routeFileds.map((routes, index) => {
@@ -164,6 +168,7 @@ function Addtrain() {
                       label="Station Name"
                       value={routes.station}
                       onChange={(event) => handleRouteForm(event, index)}
+                      color="warning"
                     />
                   </div>
                   <div className="route-form-repeat-child">
@@ -173,6 +178,7 @@ function Addtrain() {
                       label="Time From Start(mins)"
                       value={routes.timeFromStart}
                       onChange={(event) => handleRouteForm(event, index)}
+                      color="warning"
                     />
                   </div>
                   <div className="route-form-repeat-child">
@@ -185,20 +191,21 @@ function Addtrain() {
               );
             })}
             <Button
-              sx={{ backgroundColor: "#4CAF50" }}
               type="submit"
-              variant="contained"
+              variant="outlined"
               onClick={ addFields }
+              color="warning"
             >
               Add Station
             </Button>
           </div>
         </div>
         <Button
-          sx={{ backgroundColor: "#4CAF50" }}
+          
           type="submit"
-          variant="contained"
+          variant="outlined"
           onClick={ submitForm }
+          color="warning"
         >
           Add Train and Route
         </Button>

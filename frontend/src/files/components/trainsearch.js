@@ -51,10 +51,10 @@ function Trainsearch() {
 
   return (
     <div className="trainsearch">
-      <div className="flex-child">
+      <div className="flex-child" style={{margin:"auto", textAlign:"center"}}>
         <h2>Search Train</h2>
-        <form onSubmit={onSubmitForm}>
-          <div className="search-for-flex">
+        <form onSubmit={onSubmitForm} >
+          <div className="search-for-flex" >
             <div className="search-for-flex-child-1">
               <TextField 
                 className="white-button"
@@ -63,6 +63,7 @@ function Trainsearch() {
                 label="Train Number"
                 onChange={handleChange}
                 color="warning"
+                sx={{width:"250px"}}
               />
             </div>
             <div className="search-for-flex-child-3">

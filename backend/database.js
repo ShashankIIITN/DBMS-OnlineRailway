@@ -351,6 +351,14 @@ const deleteTicket = async (id) => {
       "SELECT * FROM tickets WHERE TicketID=?;",
       [id]
     );
+    const data3 = await pool.query(
+      "SELECT count(*) as count FROM passengers WHERE TicketID=? AND Status = ?;",
+      [id, "C"]
+    );
+
+    console.log("data3", data3)
+
+    let cnfd = data3[0][0].count;
 
 
     const data1 = await pool.query(
@@ -410,6 +418,11 @@ const deleteTicket = async (id) => {
       [id]
     );
 
+    const dataCon = await pool.query(
+      "UPDATE passengers SET Status = ? WHERE Status = ? LIMIT ?;",
+      ["C", "W", cnfd]
+    );
+
     return data;
   } catch (error) {
     console.log(error);
@@ -432,7 +445,7 @@ const getPNR = async (tID) => {
     const data = await pool.query(
       "SELECT * FROM tickets as t inner join passengers as p on(t.TicketID = p.TicketID) WHERE t.TicketID = ?;", [tID]
     );
-      console.log("tdata", data)
+      console.log("tdata", data )
     return data;
   } catch (error) {
     console.log(error);

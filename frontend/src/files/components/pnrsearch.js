@@ -57,10 +57,10 @@ function Pnrsearch() {
         <form onSubmit={handleSubmit}>
           <div className="pnr-for-flex">
             <div className="pnr-for-flex-child-1">
-              <TextField required id="outlined-required" label="PNR Enquiry" inputRef={reff} />
+              <TextField required id="outlined-required" label="PNR Enquiry" inputRef={reff}  color="warning"/>
             </div>
             <div className="pnr-for-flex-child-3">
-              <Button style={{ width: 100 }} type="submit" variant="contained">
+              <Button style={{ width: 100 }} type="submit" variant="contained" color="success">
                 ENQUIRE
               </Button>
             </div>

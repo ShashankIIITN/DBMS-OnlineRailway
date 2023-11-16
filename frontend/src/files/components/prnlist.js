@@ -10,21 +10,21 @@ function PNRLst(props) {
     
     return (
        props.Bookings &&  <div className="mybookings">
-            <div className="mybookings-child"><h1>Your Bookings</h1></div>
+            <div className="mybookings-child"><h2>Your Bookings</h2></div>
             <div>
                 {props.Bookings === null ? "Not Found" : <div>
                     <div className="information">
                         <div className="data">
-                            <h3>Train Name</h3>
+                            <h4>Train Name</h4>
                         </div>
                         <div className="data">
-                            <h3>Departure</h3>
+                            <h4>Departure</h4>
                         </div>
                         <div className="data">
-                            <h3>Destination</h3>
+                            <h4>Destination</h4>
                         </div>
                         <div className="data">
-                            <h3>User Info</h3>
+                            <h4>User Info</h4>
                         </div>
                     </div>
                 </div>

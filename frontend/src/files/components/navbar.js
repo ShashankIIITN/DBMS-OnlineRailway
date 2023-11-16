@@ -1,8 +1,8 @@
 import React from "react";
 import Button from "@mui/material/Button";
-
-import "../files.css";
+import "../files1.css";
 import "./navbar.css";
+import logo from "./logo3.png";
 
 function Navbar() {
   let typeUser = sessionStorage.getItem("typeUser");
@@ -25,18 +25,18 @@ function Navbar() {
                   className="a-link"
                   style={{ textDecoration: "none" }}
                 >
-                  IROR
+                  <img src={logo}></img>
                 </a>
               </h3>
             </div>
             <div className="nav_buttons_C">
               <div>
-                <Button variant="contained" href="./login">
+                <Button variant="outlined" color="success" href="./login">
                   LOGIN
                 </Button>
               </div>
               <div>
-                <Button variant="outlined" href="./register">
+                <Button variant="outlined" color="success" href="./register">
                   REGISTER
                 </Button>
               </div>
@@ -54,29 +54,29 @@ function Navbar() {
                   className="a-link"
                   style={{ textDecoration: "none" }}
                 >
-                  IROR
+                  <img src={logo}></img>
                 </a>
               </h3>
             </div>
             <div className="nav_buttons_C">
               <div>
-                <Button onClick={logOut} variant="outlined">
+                <Button onClick={logOut} variant="outlined" color="error">
                   LOGOUT
                 </Button>
               </div>
-              <a
-                href="./mybookings"
-                className="a-link margin-auto"
-                style={{ textDecoration: "none" }}
-              >
-                <div>My Bookings</div>
-              </a>
               <a
                 href="./changepassword"
                 className="a-link margin-auto"
                 style={{ textDecoration: "none" }}
               >
                 <div>Change Password</div>
+              </a>
+              <a
+                href="./mybookings"
+                className="a-link margin-auto"
+                style={{ textDecoration: "none" }}
+              >
+                <div>Bookings</div>
               </a>
             </div>
           </div>
@@ -92,7 +92,7 @@ function Navbar() {
                   className="a-link"
                   style={{ textDecoration: "none" }}
                 >
-                  IROR
+                  <img src={logo}></img>
                 </a>
               </h3>
             </div>

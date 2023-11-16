@@ -1,4 +1,4 @@
-:root{
+:root {
     --primaryBlue: #1976D2;
     --secondaryRed: #EF5350;
     --secondaryBlue: #03A9F4;
@@ -9,19 +9,40 @@
 }
 
 .footer_main {
-    background-color: var(--bgBlack);
-    color: var(--bgWhite);
+    background: url("../../../../images/pexels-senuscape-1658967.jpg") no-repeat center center/cover;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    /* opacity: 0.5; */
     padding: 30px 0px;
+    color: rgb(4, 4, 4);
+
 }
+
+/* .footer_main:before {
+    background: url("../../../../images/pexels-senuscape-1658967.jpg") no-repeat center center/cover;
+
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: translateY(-40%);
+    z-index: -1;
+    opacity: 0.5;
+} */
+
 
 .footer_content {
     display: flex;
     margin: 0px 100px;
     gap: 30px;
+    z-index: 40;
+    text-align: center;
+    opacity: 1;
+    background-color: #05050598;
 }
 
-.footer_flex{
-    flex:1;
+.footer_flex {
+    flex: 1;
 }
 
 .center {
@@ -32,7 +53,7 @@
     text-align: right;
 }
 
-.footer_end{
+.footer_end {
     font-size: 0.8rem;
     display: flex;
     margin: 5px 100px;

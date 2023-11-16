@@ -9,10 +9,10 @@ function Footer() {
             <div className="footer_content">
                 <div className="footer_flex left">
                     <h2>Indian Railways</h2>
-                    <h5>Saftey | Security | Punctuality</h5>
+                    <h5>Saftey | Security | Reliability</h5>
                 </div>
-                <div className="footer_flex right">
-                    <p>IRCTC Trains</p>
+                {/* <div className="footer_flex right">
+                    <p>All Trains</p>
                     <p>General Information</p>
                     <p>Agents</p>
                 </div>
@@ -24,16 +24,16 @@ function Footer() {
                 <div className="footer_flex right">
                     <p>About Us</p>
                     <p>Career</p>
-                    <p>Press</p>
+                    <p>FAQs</p>
                 </div>
             </div>
             <div className="footer_end">
                 <div className="footer_flex">
-                    Copyright Ⓒ 2022 IROR All Rights Reserved
-                </div>
-                <div className="footer_flex right">
+                    Copyright Ⓒ 2022 All Rights Reserved
+                </div> */}
+                {/* <div className="footer_flex right">
                     Designed and Developed with ♥
-                </div>
+                </div> */}
             </div>
         </footer>
     );

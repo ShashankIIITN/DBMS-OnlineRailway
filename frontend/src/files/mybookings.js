@@ -34,26 +34,26 @@ function Mybookings () {
 
     return (
         <div className="mybookings">
-            <div className="mybookings-child"><h1>Your Bookings</h1></div>
-            <div>
-                { bookings.lenght===0 ? " " : <div>
-                    <div className="information">
+            <div className="mybookings-child"><h2>Your Bookings</h2></div>
+            <div >
+                { bookings.lenght===0 ? " " : <div >
+                    <div className="information" style={{border:"3px solid yellow"}}>
                       <div className="data">
-                        <h3>Train Name</h3>
+                        <h4>Train Name</h4>
                       </div>
                       <div className="data">
-                        <h3>Departure</h3>
+                        <h4>Departure</h4>
                       </div>
                       <div className="data">
-                        <h3>Duration</h3>
+                        <h4>Duration</h4>
                       </div>
                       <div className="data">
-                        <h3>Arrival</h3>
+                        <h4>Arrival</h4>
                       </div>
                     </div>
                     </div>
                 }
-                {bookings.map(showBookings)};
+                {bookings.map(showBookings)}
             </div>
         </div>
     );

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import trainImg from "./register_img.png";
-import "./files.css";
+import trainImg from "./train2.jpg";
+import "./files1.css";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 
@@ -76,7 +76,7 @@ function Login(props) {
         <div className="train_image">
           <img src={trainImg} alt="Train" />
         </div>
-        <div className="login_input">
+        <div className="login_input" style={{"margin":"auto"}}>
           <div>
             <h3>Login</h3>
             <br />
@@ -89,6 +89,7 @@ function Login(props) {
                 label="Email"
                 value={user.email}
                 onChange={handleChange}
+                color="warning"
               />
               <br />
               <br />
@@ -102,12 +103,13 @@ function Login(props) {
                 autoComplete="current-password"
                 value={user.Password}
                 onChange={handleChange}
+                color="warning"
               />
               <br /> <br />
-              <Button type="submit" variant="contained">
+              <Button type="submit" variant="outlined" color="warning">
                 Login
               </Button>
-              <a style={{"margin" : "10px"}} href="/adminLogin">Admin Login</a>
+              <a style={{"margin" : "10px", "textDecoration" : "none", "color":"rgb(253, 135, 39)"}} href="/adminLogin">Admin Login</a>
             </form>
           </div>
         </div>

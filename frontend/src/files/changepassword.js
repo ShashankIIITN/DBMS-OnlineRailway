@@ -54,11 +54,11 @@ function ChangePassword() {
     }
 
     return (
-        <div className="change_password" >
-        <div>
+        <div className="change_password" style={{color:"rgb(187, 43, 43)", textAlign:"center"}}>
+        <div style={{border:"2px solid red", padding:"2%", boxShadow:"0px 0px 10px 7px #888888"}}>
         <h3>Change Password</h3>
             <br />
-            <form onSubmit={onSubmitForm}>
+            <form onSubmit={onSubmitForm} >
               <TextField
                 sx={{ width: 319 }}
                 required
@@ -67,6 +67,7 @@ function ChangePassword() {
                 label="Old Password"
                 type="password"
                 onChange={handleChange}
+                color="warning"
               />
               <br />
               <br />
@@ -79,9 +80,10 @@ function ChangePassword() {
                 type="password"
                 autoComplete="current-password"
                 onChange={handleChange} 
+                color="warning"
               />
               <br /> <br />
-              <Button type="submit" variant="contained">
+              <Button type="submit" variant="outlined" color="warning">
                 CHANGE PASSWORD
               </Button>
             </form>

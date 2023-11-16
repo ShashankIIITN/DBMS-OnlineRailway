@@ -37,25 +37,25 @@ function Tickets(props) {
         <div className="tickets-box">
             <div className="ticket-information">
                 <div className="ticket-child">
-                    <h3>{props.trainName}</h3>
-                    <h3>{props.ticket.TrainID}</h3>
-                    <h4>PNR: PNR{props.ticket.TicketID}</h4>
-                    <h4>{props.ticket.NoOfPassenger} Passengers</h4>
+                    <h4>{props.trainName}</h4>
+                    <h4>{props.ticket.TrainID}</h4>
+                    <h5>PNR: PNR{props.ticket.TicketID}</h5>
+                    <h5>{props.ticket.NoOfPassenger} Passengers</h5>
                 </div>
                 <div className="ticket-child">
-                    <h3>{props.ticket.SourceStation}</h3>
-                    <h4>
+                    <h4>{props.ticket.SourceStation}</h4>
+                    <h5>
                         {props.departureDate}{" "}
                         {months[props.departureDate]}
-                    </h4>
+                    </h5>
                 </div>
                 <div className="ticket-child">
-                    <h3>{props.ticket.DestinationStation}</h3>
-                    <h4>{props.arrivalTime}</h4>
-                    <h4>
+                    <h4>{props.ticket.DestinationStation}</h4>
+                    <h5>{props.arrivalTime}</h5>
+                    <h5>
                         {props.arrivalDate}{" "}
                         {months[props.arrivalDate]}
-                    </h4>
+                    </h5>
                     {/* <h5>
                         {props.durationHours} Hrs {props.durationMinutes} Mins
                     </h5> */}
@@ -63,13 +63,13 @@ function Tickets(props) {
                     <h5>{props.runsOn}</h5> */}
                 </div>
                 <div className="ticket-child">
-                    <h3>{props.ticket.Price} Rs</h3>
-                    <h4>{props.ticket.ContactNo}</h4>
-                    <h4>{props.ticket.Email}</h4>
+                    <h4>{props.ticket.Price} Rs</h4>
+                    <h5>{props.ticket.ContactNo}</h5>
+                    <h5>{props.ticket.Email}</h5>
                 </div>
             </div>
             <div className="ticket-information-30">
-                <Button variant="contained" style={{ backgroundColor: "#03A9F4" }}>
+                <Button variant="outlined" color="success">
                     Print Ticket
                 </Button>
             </div>

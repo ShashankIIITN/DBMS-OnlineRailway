@@ -55,18 +55,18 @@ function Tickets(props) {
     <div className="tickets-box">
       <div className="ticket-information">
         <div className="ticket-child">
-          <h3>{props.trainName}</h3>
-          <h3>{props.trainId}</h3>
-          <h4>PNR: PNR{props.ticketId}</h4>
-          <h4>{props.noOfPassengers} Passengers</h4>
+          <h4>{props.trainName}</h4>
+          <h4>{props.trainId}</h4>
+          <h5>PNR: PNR{props.ticketId}</h5>
+          <h5>{props.noOfPassengers} Passengers</h5>
         </div>
         <div className="ticket-child">
-          <h3>{props.departureStation}</h3>
-          <h4>{props.departureTime}</h4>
-          <h4>
+          <h4>{props.departureStation}</h4>
+          <h5>{props.departureTime}</h5>
+          <h5>
             {props.departureDate}{" "}
             {months[props.departureDate]}
-          </h4>
+          </h5>
         </div>
         <div className="ticket-child">
           <h5>
@@ -76,12 +76,12 @@ function Tickets(props) {
           <h5>{props.runsOn}</h5>
         </div>
         <div className="ticket-child">
-          <h3>{props.arrivalStation}</h3>
-          <h4>{props.arrivalTime}</h4>
-          <h4>
+          <h4>{props.arrivalStation}</h4>
+          <h5>{props.arrivalTime}</h5>
+          <h5>
             {props.arrivalDate}{" "}
             {months[props.arrivalDate]}
-          </h4>
+          </h5>
         </div>
       </div>
       <div className="ticket-information-30">
@@ -121,7 +121,7 @@ function Tickets(props) {
           </Button>
         </DialogActions>
       </Dialog>
-        <Button variant="contained" style={{ backgroundColor: "#03A9F4" }}>
+        <Button variant="outlined" color="success">
           Print Ticket
         </Button>
       </div>

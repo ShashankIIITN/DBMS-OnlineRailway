@@ -1,0 +1,14 @@
+.login_input{
+    padding: 0%;
+    margin-top: 1%;
+    max-height: 32rem;
+}
+.login_main{
+    gap: 2%;
+    margin-right: 2%;
+    text-align: center;
+}
+.train_image{
+    margin: auto;
+    margin-left: 2%;
+}

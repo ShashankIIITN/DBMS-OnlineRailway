@@ -26,18 +26,18 @@ function Details(props) {
             <div>
                 <div className="information"> 
                     <div className="box">
-                        <h3>{props.trainName}</h3>
-                        <h3>{props.trainid}</h3>
-                        <h4 style={{color: '#4CAF50'}}>{props.remainingSeats} Left <span style={{color:'red'}}>{props.WSeats} Waiting</span></h4>
+                        <h4>{props.trainName}</h4>
+                        <h4>{props.trainid}</h4>
+                        <h5 style={{color: '#4CAF50'}}>{props.remainingSeats} Left <span style={{color:'red'}}>{props.WSeats} Waiting</span></h5>
                         <div style={{display: 'flex', gap: 30}}>
-                            <Button onClick={bookTicket} variant="contained">Book</Button>
-                            <h4 style={{color: '#03A9F4'}}>₹{props.price}</h4>
+                            <Button onClick={bookTicket} variant="outlined" color="success">Book</Button>
+                            <h4 style={{color: 'grey'}}>₹{props.price}</h4>
                         </div>
                     </div>
                     <div className="box">
-                        <h3>{props.departure}</h3>
-                        <h4>{props.departureTime}</h4>
-                        <h4>{ props.departureDate } {months[props.departureDate]}</h4>
+                        <h4>{props.departure}</h4>
+                        <h5>{props.departureTime}</h5>
+                        <h5>{ props.departureDate } {months[props.departureDate]}</h5>
                     </div>
                     <div className="box">
                         <h5>{props.durationHours} Hrs {props.durationMinutes} Mins</h5>
@@ -45,9 +45,9 @@ function Details(props) {
                         <h5>{props.runsOn}</h5>
                     </div>
                     <div className="box">
-                        <h3>{props.arrival}</h3>
-                        <h4>{props.arrivalTime}</h4>
-                        <h4>{ props.arrivalDate } {months[props.arrivalDate]}</h4>
+                        <h4>{props.arrival}</h4>
+                        <h5>{props.arrivalTime}</h5>
+                        <h5>{ props.arrivalDate } {months[props.arrivalDate]}</h5>
                     </div>
                 </div>
             </div>

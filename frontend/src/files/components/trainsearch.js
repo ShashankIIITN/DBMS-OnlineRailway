@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import "../files.css";
+import "../files1.css";
 import "./trainsearch.css";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
@@ -62,10 +62,11 @@ function Trainsearch() {
                 id="outlined-required"
                 label="Train Number"
                 onChange={handleChange}
+                color="warning"
               />
             </div>
             <div className="search-for-flex-child-3">
-              <Button style={{ width: 100 }} type="sumbit" variant="contained">
+              <Button style={{ width: 100 }} type="sumbit" variant="contained" color="success">
                 FIND
               </Button>
             </div>

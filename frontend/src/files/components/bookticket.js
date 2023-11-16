@@ -79,6 +79,7 @@ function Bookticket() {
                 name="departure"
                 required
                 onChange={handleChange}
+                color="warning"
               />
             </div>
             <div className="ticket-from-flex-child">
@@ -89,6 +90,7 @@ function Bookticket() {
                 name="arrival"
                 required
                 onChange={handleChange}
+                color="warning"
               />
             </div>
             <div className="ticket-from-flex-child">
@@ -105,7 +107,7 @@ function Bookticket() {
               ></input>
             </div>
             <div className="ticket-from-flex-child">
-              <Button type="submit" variant="contained">
+              <Button type="submit" variant="contained" color="success">
                 SEARCH TRAINS
               </Button>
             </div>
@@ -124,18 +126,18 @@ function Bookticket() {
                   " "
                 ) : (
                   <div className="margin-10-10">
-                    <div className="information">
+                    <div className="information" style={{border:"3px solid yellow"}}>
                       <div className="data">
-                        <h3>Train Name</h3>
+                        <h4>Train Name</h4>
                       </div>
                       <div className="data">
-                        <h3>Departure</h3>
+                        <h4>Departure</h4>
                       </div>
                       <div className="data">
-                        <h3>Duration</h3>
+                        <h4>Duration</h4>
                       </div>
                       <div className="data">
-                        <h3>Arrival</h3>
+                        <h4>Arrival</h4>
                       </div>
                     </div>
                     {trainResult.map(showTrains)}

@@ -1,39 +1,48 @@
-.bookticket{
-    color: var(--primaryBlue);
+.bookticket {
+    color: rgb(187, 43, 43);
+    padding: 60px 100px 35px 100px;
+    background-color: var(--bgBlue);
     display: flex;
     flex-direction: column;
-    padding: 60px 100px 35px 100px;
+    /* background-image: url("./bg.jpg") ; */
+    /* background: url("../../../../images/pexels-ethan-sees-2867110.jpg") no-repeat center center; */
+    z-index: -1;
+    margin: 1% 0%;
 }
 
-.flex-child{
+.flex-child {
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
-.margin-10-10{
+.margin-10-10 {
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
-.ticket-from-flex{
+.ticket-from-flex {
     padding-top: 40px;
     display: flex;
     gap: 30px;
 }
 
-.ticket-from-flex-child{
+.ticket-from-flex-child {
     flex: 1;
     margin: auto;
 }
 
-.ticket-date{
+.ticket-date {
     width: 198.2px;
     height: 24.8px;
     padding: 16.5px 14px;
     border-radius: 5px;
-    border: 1px     #bdbdbd solid;
+    border: 1px #bdbdbd solid;
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
     font-size: 18px;
     color: #000;
+}
+
+.bookticket {
+    border: 2px solid white;
 }

@@ -1,7 +1,8 @@
 import React , { useState } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import trainImg from "./register_img.png";
+import trainImg from "./train2.jpg";
+import "./register.css"
 
 function Register() {
     const [user, setUser] = useState({
@@ -103,6 +104,7 @@ function Register() {
                 label="First Name"
                 value={ user.fname }
                 onChange={handleChange}
+                color="warning"
               /> 
               <br />
               <br />
@@ -113,6 +115,7 @@ function Register() {
                 label="Last Name"
                 value={ user.lname }
                 onChange={handleChange}
+                color="warning"
               />
               <br /> <br />
               <TextField
@@ -123,6 +126,7 @@ function Register() {
                 type="email"
                 value={ user.email }
                 onChange={handleChange}
+                color="warning"
               />
               <br /> <br />
               <TextField
@@ -132,6 +136,7 @@ function Register() {
                 label="Contact No"
                 value={ user.contactNo }
                 onChange={handleChange}
+                color="warning"
               />
               <br /> <br />
               <TextField
@@ -142,9 +147,10 @@ function Register() {
                 autoComplete="current-password"
                 value={ user.Password }
                 onChange={handleChange}
+                color="warning"
               />
               <br /><br />
-              <Button type="submit" variant="contained">Create Account</Button>
+              <Button type="submit" variant="outlined" color="warning">Create Account</Button>
             </form>
           </div>
         </div>

@@ -226,11 +226,11 @@ const getTrainID = async () => {
   }
 };
 
-const addPassenger = async (ticketId, name, age, gender) => {
+const addPassenger = async (ticketId, name, age, gender, status) => {
   try {
     pool.query(
-      `INSERT INTO Passengers (TicketID, Name, Age, Gender) VALUES(?,?,?,?);`,
-      [ticketId, name, age, gender]
+      `INSERT INTO Passengers (TicketID, Name, Age, Gender, Status) VALUES(?,?,?,?,?);`,
+      [ticketId, name, age, gender, status]
     );
   } catch (error) {
     console.log(error);
@@ -380,9 +380,11 @@ const deleteTicket = async (id) => {
       ]
     );
 
+    console.log("data1", data1)
+
     for (let i = 0; i < data1[0].length; i++) {
 
-      console.log(i)
+      // console.log(i)
       let len = data1[0][i].RemainingSeats;
 
       let len2 = data2[0][0].NoOfPassenger;
@@ -392,8 +394,10 @@ const deleteTicket = async (id) => {
         wlen -= Math.min(len2, wlen);
         if (wlen == 0)
           len += len2 - init;
+      }else{
+        len += len2;
       }
-      console.log(len2, wlen)
+      // console.log(len2, wlen)
       const data = await pool.query(
         `UPDATE routes SET RemainingSeats = ?, WSeats = ? WHERE RouteID = ? AND TrainID = ? AND CurrentStation = ? AND TimefromStart = ?;`, [len, wlen, data2[0][0].RouteID, data2[0][0].TrainID, data1[0][i].CurrentStation, data1[0][i].TimefromStart]
       )
@@ -426,9 +430,9 @@ const getAllBookings = async () => {
 const getPNR = async (tID) => {
   try {
     const data = await pool.query(
-      "SELECT * FROM tickets WHERE TicketID = ?;", [tID]
+      "SELECT * FROM tickets as t inner join passengers as p on(t.TicketID = p.TicketID) WHERE t.TicketID = ?;", [tID]
     );
-
+      console.log("tdata", data)
     return data;
   } catch (error) {
     console.log(error);

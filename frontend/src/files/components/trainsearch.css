@@ -23,6 +23,8 @@
 
 .margin-10-10 {
     margin-top: 10px;
+    /* display: flex;
+    flex-direction: row; */
     margin-bottom: 10px;
 }
 

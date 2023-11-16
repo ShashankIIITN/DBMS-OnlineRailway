@@ -10,15 +10,16 @@ function Bookaticket() {
   const [formFields, setFormFields] = useState([
     { name: "", age: "", gender: "" }
   ]);
-  const [searchparams]=useSearchParams();
+  const [searchparams] = useSearchParams();
   console.log(searchparams.get("routeId"));
+  console.log(searchparams.get("remainingSeats"));
 
   const [contactInfo, setContactInfo] = useState({
     email: "",
     contact: ""
   });
 
-  const handleContactChange = (event) =>{
+  const handleContactChange = (event) => {
     const newValue = event.target.value;
     const inputname = event.target.name;
     setContactInfo((prevValue) => {
@@ -54,7 +55,8 @@ function Bookaticket() {
       trainId: searchparams.get("id"),
       sourceStation: searchparams.get("departure"),
       destinationStation: searchparams.get("arrival"),
-      price: searchparams.get("price")*formFields.length,
+      price: searchparams.get("price") * formFields.length,
+      remainingseats: parseInt(searchparams.get("remainingSeats"))
     }
     console.log(formData);
 
@@ -66,7 +68,7 @@ function Bookaticket() {
       });
       let res = await response.json();
       console.log(res);
-      if(res.created===true){
+      if (res.created === true) {
         alert("Ticket Booked Succesfully");
         window.location.href = "/mybookings";
       }
@@ -92,10 +94,10 @@ function Bookaticket() {
   };
 
   return (
-    <div className="bookaticket" style={{paddingTop:"2%", boxShadow:"0px 0px 10px 10px #8888"}}>
+    <div className="bookaticket" style={{ paddingTop: "2%", boxShadow: "0px 0px 10px 10px #8888" }}>
       <h2>Passenger Information</h2>
       <div>
-        <form onSubmit={ submitForm }>
+        <form onSubmit={submitForm}>
           <div className="repeat-passenger-container">
             {formFields.map((form, index) => {
               return (
@@ -104,7 +106,7 @@ function Bookaticket() {
                     <h5>Add Passenger</h5>
                   </div>
                   <div className="repeat-passenger-flex">
-                    <div className="repeat-passenger-flex-child" style={{marginLeft:"auto"}}>
+                    <div className="repeat-passenger-flex-child" style={{ marginLeft: "auto" }}>
                       <TextField
                         sx={{ width: 319 }}
                         required
@@ -152,8 +154,8 @@ function Bookaticket() {
               );
             })}
             <div>
-              <Button onClick={addFields} color="success" variant="contained" style={{fontSize:"larger", fontStyle:"bolder", padding:'0px'}}>
-               +
+              <Button onClick={addFields} color="success" variant="contained" style={{ fontSize: "larger", fontStyle: "bolder", padding: '0px' }}>
+                +
               </Button>
             </div>
           </div>
@@ -161,7 +163,7 @@ function Bookaticket() {
             <div className="">
               <h4>Contact Info</h4>
             </div>
-            <div className="contact-details-flex" style={{marginLeft:"10%"}}>
+            <div className="contact-details-flex" style={{ marginLeft: "10%" }}>
               <div>
                 <TextField
                   sx={{ width: 319 }}
@@ -169,8 +171,8 @@ function Bookaticket() {
                   name="email"
                   label="Email"
                   type="email"
-                  value={ contactInfo.email }
-                  onChange= { handleContactChange }
+                  value={contactInfo.email}
+                  onChange={handleContactChange}
                 />
               </div>
               <div>
@@ -179,17 +181,17 @@ function Bookaticket() {
                   required
                   name="contact"
                   label="Contact No"
-                  value={ contactInfo.contact }
-                  onChange= { handleContactChange }
+                  value={contactInfo.contact}
+                  onChange={handleContactChange}
                 />
               </div>
-          <Button
-            sx={{ backgroundColor: "#4CAF50" }}
-            type="submit"
-            variant="contained"
-          >
-            Reserve Seat
-          </Button>
+              <Button
+                sx={{ backgroundColor: "#4CAF50" }}
+                type="submit"
+                variant="contained"
+              >
+                Reserve Seat
+              </Button>
             </div>
           </div>
         </form>

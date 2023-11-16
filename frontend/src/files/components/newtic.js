@@ -8,7 +8,7 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
 function Tickets(props) {
-    console.log(props)
+    console.log("props",props)
     const [open, setOpen] = React.useState(false);
 
     const handleClickOpen = () => {
@@ -34,13 +34,14 @@ function Tickets(props) {
         12: "Dec",
     };
     return (
-        <div className="tickets-box" style={{width:"110%"}}>
+        <div className="tickets-box" >
             <div className="ticket-information">
                 <div className="ticket-child">
                     <h4>{props.trainName}</h4>
                     <h4>{props.ticket.TrainID}</h4>
-                    <h5>PNR: PNR{props.ticket.TicketID}</h5>
-                    <h5>{props.ticket.NoOfPassenger} Passengers</h5>
+                    <h5>PNR: {props.ticket.TicketID}</h5>
+                    {/* <h5>{props.ticket.NoOfPassenger} Passengers</h5> */}
+                    <h5 style={{}}>Passenger ID {props.ticket.PassengerID }</h5>
                 </div>
                 <div className="ticket-child">
                     <h4>{props.ticket.SourceStation}</h4>

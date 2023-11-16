@@ -8,7 +8,7 @@ function Footer() {
         <footer className="footer_main">
             <div className="footer_content">
                 <div className="footer_flex left">
-                    <h2>IIIT Railways</h2>
+                    <h2>Sunset Railways</h2>
                     <hr></hr>
                     <h5>Your Comfort is our Responsibility!</h5>
                 </div>

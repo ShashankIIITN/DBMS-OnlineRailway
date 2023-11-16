@@ -361,7 +361,7 @@ app.post("/getPNR", async (req, res) => {
     let obj = [];
     try {
         let data = await getPNR(req.tid)
-        console.log("af",data)
+        console.log("af", data)
         res.json(data[0]);
     } catch (err) {
         res.json(obj);
@@ -374,8 +374,16 @@ app.post("/bookTicket", async (req, res) => {
         const newTicket = await BookTicket(req.userId, req.routeId, req.trainId, req.sourceStation, req.destinationStation, req.price, req.email, req.contactno, req.passengers.length);
         let ticketId = await getTrainID();
         ticketId = parseInt(ticketId[0].ticketID);
+        let rem = req.remainingseats;
+        // console.log('req')
+        // console.log(req)
         for (let i = 0; i < req.passengers.length; i++) {
-            const newPassenger = await addPassenger(ticketId, req.passengers[i].name.toLowerCase(), req.passengers[i].age, req.passengers[i].gender);
+            if (rem == 0) {
+                const newPassenger = await addPassenger(ticketId, req.passengers[i].name.toLowerCase(), req.passengers[i].age, req.passengers[i].gender, "W");
+            } else {
+                const newPassenger = await addPassenger(ticketId, req.passengers[i].name.toLowerCase(), req.passengers[i].age, req.passengers[i].gender, "C");
+                rem--;
+            }
         }
 
         const updateRemainingSeats = await updateSeats(req.passengers.length, req.sourceStation, req.destinationStation, req.routeId, req.trainId);

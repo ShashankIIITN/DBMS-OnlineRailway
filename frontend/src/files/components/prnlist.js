@@ -5,7 +5,7 @@ import ".././mybookings.css";
 function PNRLst(props) {
 
     function showBookings(ticket) {
-        return <Tickets ticket = {ticket[0]} />
+        return <Tickets key={ticket.PassengerID} ticket = {ticket} />
     }
     
     return (
@@ -29,7 +29,9 @@ function PNRLst(props) {
                     </div>
                 </div>
                 }
-                {props.Bookings && showBookings(props.Bookings)}
+                {props.Bookings && props.Bookings.map(e=>{
+                    return showBookings(e)
+                })}
             </div>
         </div>
     );

@@ -27,7 +27,10 @@ export default function AllTrain() {
       <br />
       <h1 style={{
         color:
-          "#bb2b2b"
+          "#bb2b2b",
+          textAlign:"center",
+          border:"3px dotted white",
+          // backgroundColor:"#888"
       }}>All Bookings</h1>
       <br />
       <table className="table">

@@ -13,7 +13,7 @@ function PNRLst(props) {
             <div className="mybookings-child"><h2>Your Bookings</h2></div>
             <div>
                 {props.Bookings === null ? "Not Found" : <div>
-                    <div className="information">
+                    <div className="information" style={{width:"110%"}}>
                         <div className="data">
                             <h4>Train Name</h4>
                         </div>

@@ -1,5 +1,5 @@
 .bookticket {
-    color: rgb(187, 43, 43);
+    /* color: rgb(187, 43, 43); */
     padding: 60px 100px 35px 100px;
     background-color: var(--bgBlue);
     display: flex;
@@ -13,11 +13,14 @@
 .flex-child {
     margin-top: 10px;
     margin-bottom: 10px;
+    text-align: center;
 }
 
 .margin-10-10 {
     margin-top: 10px;
     margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
 .ticket-from-flex {
@@ -45,4 +48,7 @@
 
 .bookticket {
     border: 2px solid white;
+}
+h3{
+    color: rgb(255, 157, 0);
 }

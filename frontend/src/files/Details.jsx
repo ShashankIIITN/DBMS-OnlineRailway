@@ -24,15 +24,11 @@ function Details(props) {
         <div className="trainDetails">
 
             <div>
-                <div className="information"> 
+                <div className="information" > 
                     <div className="box">
                         <h4>{props.trainName}</h4>
                         <h4>{props.trainid}</h4>
                         <h5 style={{color: '#4CAF50'}}>{props.remainingSeats} Left <span style={{color:'red'}}>{props.WSeats} Waiting</span></h5>
-                        <div style={{display: 'flex', gap: 30}}>
-                            <Button onClick={bookTicket} variant="outlined" color="success">Book</Button>
-                            <h4 style={{color: 'grey'}}>₹{props.price}</h4>
-                        </div>
                     </div>
                     <div className="box">
                         <h4>{props.departure}</h4>
@@ -50,6 +46,10 @@ function Details(props) {
                         <h5>{ props.arrivalDate } {months[props.arrivalDate]}</h5>
                     </div>
                 </div>
+                        <div style={{display: 'flex', gap: 30}}>
+                            <Button onClick={bookTicket} variant="outlined" color="success" sx={{minWidth:"90%", marginLeft:""}}>Book Tickets</Button>
+                            <h4 style={{color: 'grey'}}>₹{props.price}</h4>
+                        </div>
             </div>
         </div>
     );

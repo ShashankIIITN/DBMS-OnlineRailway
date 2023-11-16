@@ -92,8 +92,8 @@ function Bookaticket() {
   };
 
   return (
-    <div className="bookaticket">
-      <h2>Passenger Details</h2>
+    <div className="bookaticket" style={{paddingTop:"2%", boxShadow:"0px 0px 10px 10px #8888"}}>
+      <h2>Passenger Information</h2>
       <div>
         <form onSubmit={ submitForm }>
           <div className="repeat-passenger-container">
@@ -101,10 +101,10 @@ function Bookaticket() {
               return (
                 <div key={index}>
                   <div>
-                    <h5>Passenger</h5>
+                    <h5>Add Passenger</h5>
                   </div>
                   <div className="repeat-passenger-flex">
-                    <div className="repeat-passenger-flex-child">
+                    <div className="repeat-passenger-flex-child" style={{marginLeft:"auto"}}>
                       <TextField
                         sx={{ width: 319 }}
                         required
@@ -144,7 +144,7 @@ function Bookaticket() {
                         required
                         onClick={() => removeFields(index)}
                       >
-                        Remove Passenger
+                        X
                       </Button>
                     </div>
                   </div>
@@ -152,16 +152,16 @@ function Bookaticket() {
               );
             })}
             <div>
-              <Button onClick={addFields} color="success" variant="contained">
-                Add Passenger
+              <Button onClick={addFields} color="success" variant="contained" style={{fontSize:"larger", fontStyle:"bolder", padding:'0px'}}>
+               +
               </Button>
             </div>
           </div>
           <div>
             <div className="">
-              <h4>Contact Details</h4>
+              <h4>Contact Info</h4>
             </div>
-            <div className="contact-details-flex">
+            <div className="contact-details-flex" style={{marginLeft:"10%"}}>
               <div>
                 <TextField
                   sx={{ width: 319 }}
@@ -183,15 +183,15 @@ function Bookaticket() {
                   onChange= { handleContactChange }
                 />
               </div>
-            </div>
-          </div>
           <Button
             sx={{ backgroundColor: "#4CAF50" }}
             type="submit"
             variant="contained"
           >
-            Pay and Book Ticket
+            Reserve Seat
           </Button>
+            </div>
+          </div>
         </form>
       </div>
     </div>

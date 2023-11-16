@@ -37,7 +37,7 @@ function Mybookings () {
             <div className="mybookings-child"><h2>Your Bookings</h2></div>
             <div >
                 { bookings.lenght===0 ? " " : <div >
-                    <div className="information" style={{border:"3px solid yellow"}}>
+                    <div className="information" style={{border:"none", textAlign:"center", backgroundColor:"#888"}}>
                       <div className="data">
                         <h4>Train Name</h4>
                       </div>

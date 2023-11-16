@@ -126,7 +126,7 @@ function Bookticket() {
                   " "
                 ) : (
                   <div className="margin-10-10">
-                    <div className="information" style={{border:"3px solid yellow"}}>
+                    <div className="information" style={{border:"none"}}>
                       <div className="data">
                         <h4>Train Name</h4>
                       </div>

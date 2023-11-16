@@ -3,6 +3,7 @@ import Button from "@mui/material/Button";
 import "../files1.css";
 import "./navbar.css";
 import logo from ".././logo3.png";
+import FadeMenu from "./matMenu";
 
 function Navbar() {
   let typeUser = sessionStorage.getItem("typeUser");
@@ -102,18 +103,7 @@ function Navbar() {
                   LOGOUT
                 </Button>
               </div>
-              <a href="/allBookings" className="a-link margin-auto" style={{ textDecoration: "none" }}>
-                <div>View All Bookings</div>
-              </a>
-              <a href="/allTrains" className="a-link margin-auto" style={{ textDecoration: "none" }}>
-                <div>View All Trains</div>
-              </a>
-              <a href="/deleteTrain" className="a-link margin-auto" style={{ textDecoration: "none" }}>
-                <div>Delete Train</div>
-              </a>
-              <a href="/addTrain" className="a-link margin-auto" style={{ textDecoration: "none" }}>
-                <div>Add Train</div>
-              </a>
+              <FadeMenu />
             </div>
           </div>
         )}

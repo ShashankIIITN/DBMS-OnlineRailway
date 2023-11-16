@@ -34,7 +34,7 @@ function Tickets(props) {
         12: "Dec",
     };
     return (
-        <div className="tickets-box">
+        <div className="tickets-box" style={{width:"110%"}}>
             <div className="ticket-information">
                 <div className="ticket-child">
                     <h4>{props.trainName}</h4>

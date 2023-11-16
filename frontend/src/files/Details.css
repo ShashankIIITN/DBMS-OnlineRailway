@@ -2,11 +2,13 @@
     color: #fafafa;
     margin: 0;
     padding: 0;
+    text-transform: capitalize;
 }
 
 .information {
     display: flex;
-    border: 1px solid yellowgreen;
+    /* border: 1px solid yellowgreen; */
+    background-color: #888;
     border-radius: 10px;
     margin-bottom: 35px;
 }

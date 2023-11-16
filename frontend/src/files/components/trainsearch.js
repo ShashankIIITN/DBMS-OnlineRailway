@@ -51,7 +51,7 @@ function Trainsearch() {
 
   return (
     <div className="trainsearch">
-      <div className="flex-child" style={{margin:"auto", textAlign:"center"}}>
+      <div className="flex-child" style={{margin:"auto", textAlign:"center", backgroundColor:"rgba(0, 0, 0, 0.34)", padding:"1%", borderRadius:"10px"}}>
         <h2>Search Train</h2>
         <form onSubmit={onSubmitForm} >
           <div className="search-for-flex" >

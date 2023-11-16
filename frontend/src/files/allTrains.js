@@ -4,60 +4,62 @@ import "./files.css";
 import { useState } from "react";
 
 export default function AllTrain() {
-    const columns = [
-        { field: "id", headerName: "Train ID", type: "number", width: 100 },
-        { field: "trainname", headerName: "Train Name", width: 150 },
-        {
-          field: "runson",
-          headerName: "Runs On",
-          width: 130,
-        },
-        {
-          field: "totalseats",
-          headerName: "Total Seats",
-          type: "number",
-          width: 150,
-        },
-        {
-          field: "starttime",
-          headerName: "Start Time",
-          type: "date",
-          width: 140,
-        },
-      ];
+  const columns = [
+    { field: "id", headerName: "Train ID", type: "number", width: 100 },
+    { field: "trainname", headerName: "Train Name", width: 150 },
+    {
+      field: "runson",
+      headerName: "Runs On",
+      width: 130,
+    },
+    {
+      field: "totalseats",
+      headerName: "Total Seats",
+      type: "number",
+      width: 150,
+    },
+    {
+      field: "starttime",
+      headerName: "Start Time",
+      type: "date",
+      width: 140,
+    },
+  ];
 
-    const [rows, setRows] = useState([]);
+  const [rows, setRows] = useState([]);
 
-    const getAllTrains = async () => {
-        try {
-            const response = await fetch("http://192.168.106.194:5050/allTrains", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" }, 
-            });
-            const res = await response.json();
-            console.log(res);
-            setRows(res);
-            // for(var i = 0; i < res.length; i++){
-            //   res.allTrainsData[i]["id"] = res.allTrainsData[i].trainid ;
-            // }
-            // rws = res;
-            // const a = res.allTrainsData;
-            // console.log(typeof(a.allTrainsData));
-            // console.log((res.allTrainsData));
-            // setRows(res.allTrainsData);
-            
-          } catch (err) {
-            console.log(err);
-          }
+  const getAllTrains = async () => {
+    try {
+      const response = await fetch("http://localhost:5050/allTrains", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+      });
+      const res = await response.json();
+      console.log(res);
+      setRows(res);
+      // for(var i = 0; i < res.length; i++){
+      //   res.allTrainsData[i]["id"] = res.allTrainsData[i].trainid ;
+      // }
+      // rws = res;
+      // const a = res.allTrainsData;
+      // console.log(typeof(a.allTrainsData));
+      // console.log((res.allTrainsData));
+      // setRows(res.allTrainsData);
+
+    } catch (err) {
+      console.log(err);
     }
-    React.useEffect(() => {
-        getAllTrains();
-    }, [setRows]);
+  }
+  React.useEffect(() => {
+    getAllTrains();
+  }, [setRows]);
   return (
-    <div className="datagrid-containter" style={{textAlign:"center"}}>
+    <div className="datagrid-containter" style={{ textAlign: "center", justifyContent: "center" }}>
       <br />
-      <h1 >All Trains</h1>
-      <br/>
+
+      <center> <h1 style={{ border: '3px dotted white', color: 'rgb(187, 43, 43)', width: '55%' }}>All Trains</h1> </center>
+
+      <br />
       <table className="table" >
         <thead>
           <tr>
@@ -69,17 +71,17 @@ export default function AllTrain() {
           </tr>
         </thead>
         <tbody>
-        {rows.map((item, index) => (
-      <tr key={index}>
-        <td>
-          {item.TrainID}
-        </td>
-        <td>{item.TrainName}</td>
-        <td>{item.RunsOn}</td>
-        <td>{item.TotalSeats}</td>
-        <td>{item.StartTime}</td>
-      </tr>
-    ))}
+          {rows.map((item, index) => (
+            <tr key={index}>
+              <td>
+                {item.TrainID}
+              </td>
+              <td>{item.TrainName}</td>
+              <td>{item.RunsOn}</td>
+              <td>{item.TotalSeats}</td>
+              <td>{item.StartTime}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>

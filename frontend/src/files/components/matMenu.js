@@ -4,7 +4,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Fade from '@mui/material/Fade';
 
-export default function FadeMenu() {
+export default function FadeMenu(props) {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -15,7 +15,7 @@ export default function FadeMenu() {
     };
 
     return (
-        <div>
+        <div className='nvhov'>
             <Button
                 id="fade-button"
                 aria-controls={open ? 'fade-menu' : undefined}
@@ -26,7 +26,7 @@ export default function FadeMenu() {
             >
                 More Options
             </Button>
-            <Menu
+            {props.type == "admin" ? <Menu
                 id="fade-menu"
                 MenuListProps={{
                     'aria-labelledby': 'fade-button',
@@ -39,19 +39,48 @@ export default function FadeMenu() {
                 {/* <MenuItem onClick={handleClose}>Profile</MenuItem>
                 <MenuItem onClick={handleClose}>My account</MenuItem>
                 <MenuItem onClick={handleClose}>Logout</MenuItem> */}
-                <MenuItem><a href="/allBookings" className="a-link margin-auto" style={{ textDecoration: "none", color:"white" }}>
+                <MenuItem><a href="/allBookings" className="a-link margin-auto" style={{ textDecoration: "none", color: "white" }}>
                     <div>View All Bookings</div>
                 </a></MenuItem>
-                <MenuItem><a href="/allTrains" className="a-link margin-auto" style={{ textDecoration: "none", color:"white" }}>
+                <MenuItem><a href="/allTrains" className="a-link margin-auto" style={{ textDecoration: "none", color: "white" }}>
                     <div>View All Trains</div>
                 </a></MenuItem>
-                <MenuItem><a href="/deleteTrain" className="a-link margin-auto" style={{ textDecoration: "none", color:"white" }}>
+                <MenuItem><a href="/deleteTrain" className="a-link margin-auto" style={{ textDecoration: "none", color: "white" }}>
                     <div>Delete Train</div>
                 </a></MenuItem>
-                <MenuItem><a href="/addTrain" className="a-link margin-auto" style={{ textDecoration: "none", color:"white" }}>
+                <MenuItem><a href="/addTrain" className="a-link margin-auto" style={{ textDecoration: "none", color: "white" }}>
                     <div>Add Train</div>
                 </a></MenuItem>
+            </Menu> : <Menu
+                id="fade-menu"
+                MenuListProps={{
+                    'aria-labelledby': 'fade-button',
+                }}
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+                TransitionComponent={Fade}
+            >
+                {/* <MenuItem onClick={handleClose}>Profile</MenuItem>
+                <MenuItem onClick={handleClose}>My account</MenuItem>
+                <MenuItem onClick={handleClose}>Logout</MenuItem> */}
+                <MenuItem><a
+                    href="./changepassword"
+                    className="a-link margin-auto"
+                    style={{ textDecoration: "none", color:'white' }}
+                >
+                    <div>Change Password</div>
+                </a></MenuItem>
+                <MenuItem>
+                    <a
+                        href="./mybookings"
+                        className="a-link margin-auto"
+                        style={{ textDecoration: "none", color:'white' }}
+                    >
+                        <div>Bookings</div>
+                    </a></MenuItem>
             </Menu>
+            }
         </div>
     );
 }

@@ -71,27 +71,27 @@ function Addtrain() {
     };
     console.log(JSON.stringify(formData));
 
-      e.preventDefault();
-      try {
-        console.log(formData);
-        const response = await fetch("http://192.168.106.194:5050/addTrain", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData),
-        });
-        let res = await response.json();
-        console.log(res);
-        if(!res.success){
-          alert("Train was not added.");
-        }
-        else{
-          alert("Train added.");
-          window.location.href = "/allTrains";
-        }
-      } catch (err) {
-        console.log(err);
+    e.preventDefault();
+    try {
+      console.log(formData);
+      const response = await fetch("http://localhost:5050/addTrain", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      let res = await response.json();
+      console.log(res);
+      if (!res.success) {
+        alert("Train was not added.");
       }
-    };
+      else {
+        alert("Train added.");
+        window.location.href = "/allTrains";
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const addFields = () => {
     let object = {
@@ -110,9 +110,9 @@ function Addtrain() {
   };
 
   return (
-    <div className="add-train">
+    <div className="add-train" style={{border: '3px dashed white', width: '90%', translate:"-3%", padding:'1%', boxShadow:"0px 0px 10px 10px #888" }}>
       <form>
-        <h2>Train Details</h2>
+        <center><h2 style={{ border: '3px dotted white', width: '95%' }}>Train Details</h2></center>
         <div className="train-details">
           <div className="train-details-child">
             <TextField
@@ -155,7 +155,7 @@ function Addtrain() {
             />
           </div>
         </div>
-        <h2 >Route Details</h2>
+        <center><h2 style={{ border: '3px dotted white', width: '95%' }}>Route Details</h2></center>
         <div className="route-detials">
           <div className="route-form-container">
             {routeFileds.map((routes, index) => {
@@ -193,7 +193,7 @@ function Addtrain() {
             <Button
               type="submit"
               variant="outlined"
-              onClick={ addFields }
+              onClick={addFields}
               color="warning"
             >
               Add Station
@@ -201,10 +201,10 @@ function Addtrain() {
           </div>
         </div>
         <Button
-          
+
           type="submit"
           variant="outlined"
-          onClick={ submitForm }
+          onClick={submitForm}
           color="warning"
         >
           Add Train and Route

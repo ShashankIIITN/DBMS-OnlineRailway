@@ -22,13 +22,13 @@ function Details(props) {
 
     return (
         <div className="trainDetails">
-
+           
             <div>
                 <div className="information" > 
                     <div className="box">
                         <h4>{props.trainName}</h4>
-                        <h4>{props.trainid}</h4>
-                        <h5 style={{color: '#4CAF50'}}>{props.remainingSeats} Left <span style={{color:'red'}}>{props.WSeats} Waiting</span></h5>
+                        <h4>Train Id: {props.trainid}</h4>
+                        <h5 style={{color: '#4CAF50'}}>{props.remainingSeats} Seats Left <br /><span style={{color:'red'}}>{props.WSeats} Waiting</span></h5>
                     </div>
                     <div className="box">
                         <h4>{props.departure}</h4>
@@ -36,19 +36,19 @@ function Details(props) {
                         <h5>{ props.departureDate } {months[props.departureDate]}</h5>
                     </div>
                     <div className="box">
-                        <h5>{props.durationHours} Hrs {props.durationMinutes} Mins</h5>
-                        <h5>Runs On</h5>
-                        <h5>{props.runsOn}</h5>
-                    </div>
-                    <div className="box">
                         <h4>{props.arrival}</h4>
                         <h5>{props.arrivalTime}</h5>
                         <h5>{ props.arrivalDate } {months[props.arrivalDate]}</h5>
                     </div>
+                    <div className="box">
+                        <h5>{props.durationHours} Hrs {props.durationMinutes} Mins</h5>
+                        <h5>Runs On</h5>
+                        <h5>{props.runsOn}</h5>
+                    </div>
                 </div>
-                        <div style={{display: 'flex', gap: 30}}>
-                            <Button onClick={bookTicket} variant="outlined" color="success" sx={{minWidth:"90%", marginLeft:""}}>Book Tickets</Button>
-                            <h4 style={{color: 'grey'}}>₹{props.price}</h4>
+                        <div style={{display: 'flex', gap: 30, justifyContent:"center"}}>
+                            <Button onClick={bookTicket} variant="contained" color="success" sx={{minWidth:"20%", marginLeft:"" }}>Book Tickets</Button>
+                            <h4 style={{color: 'grey', color:"green", backgroundColor:'light-green'}}>₹{props.price}</h4>
                         </div>
             </div>
         </div>

@@ -62,12 +62,12 @@ function Tickets(props) {
   };
   return (
     <>
-      <div className="tickets-box" >
-        <div className="ticket-information" >
+      <div className="tickets-box">
+        <div className="ticket-information">
           <div className="ticket-child">
             <h4>{props.trainName}</h4>
             <h4>{props.trainId}</h4>
-            <h5>PNR: PNR{props.ticketId}</h5>
+            <h5>PNR: {props.ticketId}</h5>
             <h5>{props.noOfPassengers} Passengers</h5>
           </div>
           <div className="ticket-child">
@@ -137,7 +137,7 @@ function Tickets(props) {
         </div>
       </div>
       <div style={{ display: "none" }}>
-        <div className="tickets-box" style={{textAlign:'center'}} ref={compReff} >
+        <div className="tickets-box" style={{ textAlign: 'center' }} ref={compReff} >
           <h2>Sunset Railways</h2>
           <div className="ticket-information" >
             <div className="ticket-child">

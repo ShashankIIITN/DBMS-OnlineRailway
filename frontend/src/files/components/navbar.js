@@ -65,20 +65,7 @@ function Navbar() {
                   LOGOUT
                 </Button>
               </div>
-              <a
-                href="./changepassword"
-                className="a-link margin-auto"
-                style={{ textDecoration: "none" }}
-              >
-                <div>Change Password</div>
-              </a>
-              <a
-                href="./mybookings"
-                className="a-link margin-auto"
-                style={{ textDecoration: "none" }}
-              >
-                <div>Bookings</div>
-              </a>
+              <FadeMenu type={typeUser} />
             </div>
           </div>
         )}
@@ -103,7 +90,7 @@ function Navbar() {
                   LOGOUT
                 </Button>
               </div>
-              <FadeMenu />
+              <FadeMenu type={typeUser} />
             </div>
           </div>
         )}

@@ -44,3 +44,6 @@ background: linear-gradient(174deg, rgba(193,201,201,1) 0%, rgba(10,9,4,1) 100%,
     gap: 40px;
 }
 
+.a-link div:hover{
+    color: rgb(251, 255, 0);
+}

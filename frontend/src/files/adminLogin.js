@@ -31,7 +31,7 @@ function AdminLogin(props) {
   const onSubmitForm = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://192.168.106.194:5050/adminLogin", {
+      const response = await fetch("http://localhost:5050/adminLogin", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(user),

@@ -86,8 +86,8 @@ const addTrain = async (name, runson, seats, startTime) => {
 const addRoute = async (trainID, station, seats, startTime, d1, routeID) => {
   try {
     const [data] = await pool.query(
-      `INSERT INTO Routes (TrainID, CurrentStation, RemainingSeats, TimefromStart, CurrentDate, RouteID) VALUES(?, ?, ?, ?, ?, ?)`,
-      [trainID, station, seats, startTime, d1, routeID]
+      `INSERT INTO Routes (RouteID, TrainID, CurrentStation, RemainingSeats, TimefromStart, CurrentDate ) VALUES(?, ?, ?, ?, ?, ?)`,
+      [routeID, trainID, station, seats, startTime, d1]
     );
 
     return data;

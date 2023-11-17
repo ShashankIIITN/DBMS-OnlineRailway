@@ -9,7 +9,7 @@ function DeleteTrain() {
 
   const deleteTrain = async () => {
     try {
-        const response = await fetch("http://192.168.106.194:5050/deleteTrain", {
+        const response = await fetch("http://localhost:5050/deleteTrain", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(trainId),

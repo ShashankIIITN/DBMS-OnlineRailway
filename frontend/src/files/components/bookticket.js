@@ -5,7 +5,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Details from "../Details";
 
-const url ="192.168.106.194";
+const url ="localhost";
 
 function Bookticket() {
   const [flag, setFlag] = useState(false);

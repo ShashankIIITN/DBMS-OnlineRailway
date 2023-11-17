@@ -19,7 +19,7 @@ function Mybookings () {
 
         console.log(userId);
         try {
-            const response = await fetch("http://192.168.106.194:5050/getBookings", {
+            const response = await fetch("http://localhost:5050/getBookings", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify(userId),
